@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  DEPRECATED: This static sitemap is no longer in use.
+  The application now provides a dynamic sitemap at /#/sitemap
+  Please submit that URL to Google Search Console and remove this file from your project if you wish.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://afllami.netlify.app/</loc>
+    <lastmod>2024-01-01</lastmod>
+    <priority>1.0</priority>
+  </url>
+</urlset>
