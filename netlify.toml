@@ -1,0 +1,21 @@
+# This rule forces the sitemap to be served with the correct XML content type.
+# This is crucial for Google Search Console and other crawlers.
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Content-Type = "application/xml"
+
+# This rule permanently redirects any incorrect attempts to access a .html sitemap
+# to the correct .xml version.
+[[redirects]]
+  from = "/sitemap.html"
+  to = "/sitemap.xml"
+  status = 301
+  force = true
+
+# This is the standard redirect rule for Single-Page Applications (like this React app).
+# It ensures that all routes are handled by the client-side router.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
