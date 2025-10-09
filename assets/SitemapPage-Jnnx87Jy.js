@@ -1,9 +1,0 @@
-import{s as p,r as d,j as n,g as f}from"./index-C2Jj2ziF.js";const h=["kurdish","asian","turkish","arabic","classic","dubbed","indian","anime"],m=e=>{try{return new Date(e).toISOString().split("T")[0]}catch{return new Date().toISOString().split("T")[0]}},c=(e,a,t,s)=>`
-  <url>
-    <loc>${e}</loc>
-    <lastmod>${a}</lastmod>
-    <changefreq>${t}</changefreq>
-    <priority>${s}</priority>
-  </url>`,g=async()=>{const e="https://afllami.netlify.app",a=m(new Date().toISOString());let t=`<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;t+=c(`${e}/`,a,"daily","1.0"),t+=c(`${e}/#/series`,a,"daily","0.9"),h.forEach(r=>{t+=c(`${e}/#/movies/${r}`,a,"weekly","0.8")});const{data:s,error:o}=await p.from("movies").select("id, created_at");if(o)throw console.error("Error fetching movies for sitemap:",o),new Error(`Failed to fetch movies: ${o.message}`);s==null||s.forEach(r=>{t+=c(`${e}/#/movie/${r.id}`,m(r.created_at),"monthly","0.7")});const{data:i,error:l}=await p.from("series").select("id, created_at");if(l)throw console.error("Error fetching series for sitemap:",l),new Error(`Failed to fetch series: ${l.message}`);return i==null||i.forEach(r=>{t+=c(`${e}/#/series/${r.id}`,m(r.created_at),"monthly","0.7")}),t+=`
-</urlset>`,t},w=()=>{const[e,a]=d.useState(""),[t,s]=d.useState(!0),[o,i]=d.useState(null);return d.useEffect(()=>{(async()=>{try{const r=await g();a(r)}catch(r){i(r.message||"Failed to generate sitemap.")}finally{s(!1)}})()},[]),t?n.jsx(f,{}):o?n.jsxs("div",{className:"text-center p-8 bg-red-900/20 border border-red-500/50 rounded-lg mt-8 animate-fade-in",children:[n.jsx("h2",{className:"text-2xl text-red-400 mb-4",children:"فشل إنشاء خريطة الموقع"}),n.jsx("p",{className:"text-slate-300 whitespace-pre-line",children:o})]}):n.jsx("pre",{style:{wordWrap:"break-word",whiteSpace:"pre-wrap",color:"#cbd5e1",direction:"ltr"},children:e})};export{w as default};
